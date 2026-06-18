@@ -1,404 +1,404 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>BioEny · War Room Sessão 03 | Painel dos Agentes + Prestação de Contas</title>
-    <!-- Plus Jakarta Sans -->
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Chart.js CDN -->
-    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
-    <style>
-        * { scroll-behavior: smooth; }
-        body { font-family: 'Plus Jakarta Sans', sans-serif; background: #f4f7fc; }
-        .card-hover { transition: transform 0.2s ease, box-shadow 0.2s ease; }
-        .card-hover:hover { transform: translateY(-4px); box-shadow: 0 25px 35px -12px rgba(0,0,0,0.15); }
-        .agent-card { border-left-width: 4px; transition: all 0.2s; }
-        .agent-card:hover { transform: translateX(4px); }
-        ::-webkit-scrollbar { width: 5px; }
-        ::-webkit-scrollbar-track { background: #eef2ff; }
-        ::-webkit-scrollbar-thumb { background: #2563eb; border-radius: 10px; }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BioEny · Infográfico Interativo · Sessão 04</title>
+  <!-- Tailwind via CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Font Plus Jakarta Sans -->
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+  <style>
+    body { font-family: 'Plus Jakarta Sans', sans-serif; background: #f8fafc; }
+    .gradient-header { background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); }
+    .gradient-card-green { background: linear-gradient(145deg, #ecfdf5, #d1fae5); border-left: 6px solid #10b981; }
+    .gradient-card-red { background: linear-gradient(145deg, #fef2f2, #fee2e2); border-left: 6px solid #ef4444; }
+    .gradient-card-purple { background: linear-gradient(145deg, #f5f3ff, #ede9fe); border-left: 6px solid #7c3aed; }
+    .badge-trl { background: #0f172a; color: #facc15; padding: 4px 12px; border-radius: 40px; font-weight: 700; font-size: 0.8rem; letter-spacing: 0.3px; }
+    .badge-risk { background: #dc2626; color: white; padding: 4px 12px; border-radius: 40px; font-weight: 700; font-size: 0.8rem; }
+    .card-shadow { box-shadow: 0 20px 30px -10px rgba(15, 23, 42, 0.15); transition: all 0.2s; }
+    .card-shadow:hover { transform: translateY(-4px); box-shadow: 0 30px 40px -12px rgba(15, 23, 42, 0.25); }
+    .agent-col-header { padding: 10px 16px; border-radius: 60px; font-weight: 700; letter-spacing: 0.3px; display: inline-block; }
+    .arrow-pivot { font-size: 2.5rem; color: #2563eb; font-weight: 300; }
+  </style>
 </head>
-<body class="antialiased">
+<body>
 
-    <!-- HEADER / SALA DE SITUAÇÃO com linha do tempo -->
-    <section class="relative bg-gradient-to-br from-[#0f172a] via-[#1e2a44] to-[#0a0f2a] text-white overflow-hidden">
-        <div class="absolute inset-0 opacity-10 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4MCIgaGVpZ2h0PSI4MCIgdmlld0JveD0iMCAwIDQwIDQwIj48cG9seWdvbiBmaWxsPSIjZmZmIiBwb2ludHM9IjIwLDMgMzgsMzAgMiwzMCIvPjwvc3ZnPg==')] bg-repeat"></div>
-        <div class="max-w-7xl mx-auto px-6 py-8 md:py-12 relative">
-            <div class="flex flex-wrap justify-between items-start gap-4">
-                <div>
-                    <div class="flex flex-wrap gap-3 items-center">
-                        <span class="bg-[#2563eb]/30 backdrop-blur-sm px-3 py-1 rounded-full text-xs font-semibold border border-[#2563eb]/50">SESSÃO 03 · 30 ABR 2026</span>
-                        <span class="bg-emerald-500/30 backdrop-blur-sm px-3 py-1 rounded-full text-xs font-semibold border border-emerald-400/50">PIVÔ ESTRATÉGICO</span>
-                        <span class="bg-amber-500/30 px-3 py-1 rounded-full text-xs font-semibold">🎯 IA + Hardware</span>
-                    </div>
-                    <h1 class="text-4xl md:text-5xl font-extrabold mt-4 tracking-tight">BioEny Research<br><span class="text-[#60a5fa]">CHIP-Eny · Plataforma de Dados Biológicos</span></h1>
-                    <div class="flex flex-wrap items-center gap-4 mt-5 text-sm text-slate-300">
-                        <div class="flex items-center gap-2"><div class="w-2 h-2 rounded-full bg-emerald-400"></div><span>Sessão 01: 20 Mar</span></div>
-                        <div class="w-4 h-px bg-slate-600 hidden sm:block"></div>
-                        <div class="flex items-center gap-2"><div class="w-2 h-2 rounded-full bg-blue-400"></div><span>Sessão 02: 02 Abr</span></div>
-                        <div class="w-4 h-px bg-slate-600 hidden sm:block"></div>
-                        <div class="flex items-center gap-2"><div class="w-3 h-3 rounded-full bg-amber-400 animate-pulse"></div><span class="font-semibold text-white">Sessão 03: 30 Abr (IA consolidada)</span></div>
-                    </div>
-                </div>
-                <div class="flex gap-3">
-                    <div class="bg-white/5 backdrop-blur-sm border border-white/20 rounded-2xl p-4 text-center">
-                        <div class="text-xs text-blue-300">TRL Atual</div>
-                        <div class="text-3xl font-black">4</div>
-                        <div class="text-[10px] text-slate-400">alvo TRL 5/6</div>
-                    </div>
-                    <div class="bg-white/5 backdrop-blur-sm border border-white/20 rounded-2xl p-4 text-center">
-                        <div class="text-xs text-emerald-300">Diferencial</div>
-                        <div class="text-2xl font-bold text-emerald-400">IA + Chip</div>
-                        <div class="text-[10px] text-slate-400">Solução completa</div>
-                    </div>
-                </div>
-            </div>
+  <!-- HEADER PRINCIPAL -->
+  <header class="gradient-header text-white px-6 py-8 md:py-10 md:px-12 border-b-4 border-blue-500">
+    <div class="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-4">
+      <div>
+        <h1 class="text-3xl md:text-4xl font-extrabold tracking-tight">🧬 BioEny</h1>
+        <p class="text-blue-200 text-sm md:text-base font-medium mt-1">Organ-on-a-Chip · Angiogênese & Feridas Diabéticas</p>
+        <div class="flex flex-wrap items-center gap-3 mt-3">
+          <span class="badge-trl text-xs">🔬 TRL 4 → 5</span>
+          <span class="badge-risk">⚠️ Risco Estratégico Médio</span>
         </div>
-        <div class="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-[#f4f7fc] to-transparent"></div>
+      </div>
+      <div class="text-right">
+        <div class="text-sm text-blue-200 font-medium">📅 Linha do tempo</div>
+        <div class="flex flex-wrap gap-3 mt-1 text-sm font-semibold">
+          <span class="bg-blue-900/40 px-3 py-1 rounded-full">20/mar</span>
+          <span class="bg-blue-900/40 px-3 py-1 rounded-full">02/abr</span>
+          <span class="bg-blue-900/40 px-3 py-1 rounded-full">30/abr</span>
+          <span class="bg-blue-600 px-3 py-1 rounded-full shadow-md">02/jun <span class="font-light text-blue-200">atual</span></span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- CONTEÚDO PRINCIPAL -->
+  <main class="max-w-7xl mx-auto px-4 py-8 md:py-10">
+
+    <!-- LINHA 1: GRÁFICOS (TRL + RISCOS/RECURSOS) -->
+    <section class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
+      <!-- Card Gráfico TRL -->
+      <div class="bg-white rounded-3xl card-shadow p-6">
+        <h2 class="text-xl font-bold text-slate-800 flex items-center gap-2 mb-2"><span class="text-blue-600">📈</span> Evolução TRL</h2>
+        <p class="text-sm text-slate-500 mb-4">Da Sessão 01 à Sessão 04 · comparação crítica</p>
+        <div class="h-64 w-full">
+          <canvas id="chartTRL" width="400" height="250"></canvas>
+        </div>
+        <div class="flex justify-between text-xs text-slate-500 mt-2 px-1">
+          <span>🔬 Sessão 01 (TRL 4)</span>
+          <span>⚙️ Sessão 04 (TRL 5)</span>
+        </div>
+      </div>
+
+      <!-- Card Gráfico Alocação de Riscos / Recursos -->
+      <div class="bg-white rounded-3xl card-shadow p-6">
+        <h2 class="text-xl font-bold text-slate-800 flex items-center gap-2 mb-2"><span class="text-red-500">🧩</span> Riscos & Captação</h2>
+        <p class="text-sm text-slate-500 mb-4">Dependência de fomento · novos horizontes</p>
+        <div class="h-64 w-full">
+          <canvas id="chartRiscos" width="400" height="250"></canvas>
+        </div>
+        <div class="flex flex-wrap justify-between text-xs text-slate-500 mt-2 px-1">
+          <span>🔴 Dependência pública: 65%</span>
+          <span>🟢 Receita recorrente (IA): 20%</span>
+          <span>🟡 Transferência: 15%</span>
+        </div>
+      </div>
     </section>
 
-    <!-- LINHA 1: EVOLUÇÃO TRL + GRÁFICO DE ALOCAÇÃO DE RECURSOS -->
-    <section class="max-w-7xl mx-auto px-6 py-8 md:py-12">
-        <div class="grid lg:grid-cols-2 gap-8">
-            <div class="bg-white rounded-3xl shadow-xl p-6 card-hover">
-                <div class="flex justify-between items-center mb-4">
-                    <h2 class="text-xl font-bold text-[#0f172a]">📈 Evolução TRL (Sessão 01 → 03)</h2>
-                    <span class="text-xs bg-slate-100 px-2 py-1 rounded-full">Edital StartBSB</span>
-                </div>
-                <canvas id="trlEvolutionChart" width="400" height="280" style="max-height: 250px; width:100%"></canvas>
-                <p class="text-center text-xs text-gray-500 mt-3">Consolidação da IA como diferencial competitivo · chip nacional + software de análise</p>
+    <!-- LINHA 2: PAINEL DOS AGENTES (3 COLUNAS) -->
+    <section class="mb-12">
+      <div class="flex items-center gap-3 mb-6">
+        <span class="text-2xl">🧠</span>
+        <h2 class="text-2xl font-bold text-slate-800">Análise dos Agentes Especialistas</h2>
+        <span class="bg-slate-200 text-slate-600 text-xs px-3 py-1 rounded-full font-semibold">Sessão 04</span>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <!-- COLUNA 1: METAS & AVANÇOS (Produto, Mercado, Prestação) -->
+        <div>
+          <div class="bg-emerald-50 rounded-2xl p-4 border border-emerald-200 shadow-sm h-full">
+            <div class="agent-col-header bg-emerald-200 text-emerald-800">🚀 Metas & Avanços</div>
+            <!-- Agente Produto -->
+            <div class="mt-5 bg-white rounded-xl p-4 shadow-md border-l-4 border-emerald-400">
+              <div class="flex items-center justify-between">
+                <span class="font-bold text-emerald-700">🧪 Agente Produto</span>
+                <span class="text-[10px] bg-emerald-100 text-emerald-700 px-2 py-1 rounded-full">Evolução crítica</span>
+              </div>
+              <p class="text-xs text-slate-600 mt-2"><span class="font-semibold">Força:</span> Testes iniciais bem-sucedidos em laboratórios. Integração com IA (Embrapii) como upgrade.</p>
+              <p class="text-xs text-slate-600"><span class="font-semibold">Atenção:</span> Preço ainda alto para pesquisadores; clientes pedem customização.</p>
+              <div class="mt-2 text-xs bg-emerald-50 p-2 rounded-lg"><span class="font-medium">🎯 Recomendação:</span> Reavaliar precificação e posicionar chip como "acesso" à plataforma de IA.</div>
             </div>
-            
-            <div class="bg-white rounded-3xl shadow-xl p-6 card-hover">
-                <div class="flex justify-between items-center mb-2">
-                    <h2 class="text-xl font-bold text-[#0f172a]">💰 Estrutura de Custos (Nova DRE)</h2>
-                    <span class="text-xs bg-amber-100 text-amber-800 px-2 py-1 rounded-full">Separação Capex/Opex + IA</span>
-                </div>
-                <canvas id="costAllocationChart" width="400" height="240" style="max-height: 220px; width:100%"></canvas>
-                <div class="grid grid-cols-2 gap-2 mt-4 text-xs">
-                    <div class="flex items-center gap-1"><span class="w-3 h-3 bg-[#10b981] rounded-full"></span><span>Custo variável (chip)</span></div>
-                    <div class="flex items-center gap-1"><span class="w-3 h-3 bg-[#2563eb] rounded-full"></span><span>Desenv. IA / servidores</span></div>
-                    <div class="flex items-center gap-1"><span class="w-3 h-3 bg-[#f59e0b] rounded-full"></span><span>Rateio Capex (depreciação)</span></div>
-                    <div class="flex items-center gap-1"><span class="w-3 h-3 bg-[#ef4444] rounded-full"></span><span>Margem recorrente (serviço)</span></div>
-                </div>
-                <div class="mt-3 text-[11px] text-gray-500 bg-slate-50 p-2 rounded-lg">📌 Integração IA → modelo de recorrência aumenta LTV e corrige baixa margem do hardware.</div>
+            <!-- Agente Mercado -->
+            <div class="mt-4 bg-white rounded-xl p-4 shadow-md border-l-4 border-emerald-400">
+              <div class="flex items-center justify-between">
+                <span class="font-bold text-emerald-700">🌍 Agente Mercado</span>
+                <span class="text-[10px] bg-emerald-100 text-emerald-700 px-2 py-1 rounded-full">Pivot estratégico</span>
+              </div>
+              <p class="text-xs text-slate-600 mt-2"><span class="font-semibold">Força:</span> Três frentes: venda direta, IA/Embrapii, transferência tecnológica. Abertura internacional (Apex).</p>
+              <p class="text-xs text-slate-600"><span class="font-semibold">Atenção:</span> Mercado nacional não compra mesmo com custo 80% menor.</p>
+              <div class="mt-2 text-xs bg-emerald-50 p-2 rounded-lg"><span class="font-medium">🎯 Recomendação:</span> Pesquisa qualitativa com clientes que recusaram o chip para entender objeções reais.</div>
             </div>
+            <!-- Agente Prestação de Contas (metas) -->
+            <div class="mt-4 bg-white rounded-xl p-4 shadow-md border-l-4 border-emerald-400">
+              <div class="flex items-center justify-between">
+                <span class="font-bold text-emerald-700">📋 Agente Prestação</span>
+                <span class="text-[10px] bg-emerald-100 text-emerald-700 px-2 py-1 rounded-full">PC concluída</span>
+              </div>
+              <p class="text-xs text-slate-600 mt-2"><span class="font-semibold">Meta:</span> Edital R$10k — prestação de contas finalizada. Riscos zero.</p>
+              <p class="text-xs text-slate-600"><span class="font-semibold">Avanço:</span> PC resolvida, foco agora em novos modelos.</p>
+              <div class="mt-2 text-xs bg-emerald-50 p-2 rounded-lg"><span class="font-medium">📌 Recomendação:</span> Mapear requisitos de PC da Embrapii com antecedência.</div>
+            </div>
+          </div>
         </div>
+
+        <!-- COLUNA 2: RISCOS & ATENÇÃO (Finanças, Operações) -->
+        <div>
+          <div class="bg-red-50 rounded-2xl p-4 border border-red-200 shadow-sm h-full">
+            <div class="agent-col-header bg-red-200 text-red-800">⚠️ Riscos & Gargalos</div>
+            <!-- Agente Finanças -->
+            <div class="mt-5 bg-white rounded-xl p-4 shadow-md border-l-4 border-red-400">
+              <div class="flex items-center justify-between">
+                <span class="font-bold text-red-700">💰 Agente Finanças</span>
+                <span class="text-[10px] bg-red-100 text-red-700 px-2 py-1 rounded-full">Risco de caixa</span>
+              </div>
+              <p class="text-xs text-slate-600 mt-2"><span class="font-semibold">Força:</span> Consciência de que venda unitária não sustenta; receita recorrente via IA é caminho.</p>
+              <p class="text-xs text-slate-600"><span class="font-semibold">Atenção:</span> Dependência de fomento público (Embrapii) sem projeção de custos operacionais de IA.</p>
+              <div class="mt-2 text-xs bg-red-50 p-2 rounded-lg"><span class="font-medium">⚠️ Recomendação:</span> Construir modelo financeiro com três cenários: chip, IA, transferência.</div>
+            </div>
+            <!-- Agente Operações -->
+            <div class="mt-4 bg-white rounded-xl p-4 shadow-md border-l-4 border-red-400">
+              <div class="flex items-center justify-between">
+                <span class="font-bold text-red-700">⚙️ Agente Operações</span>
+                <span class="text-[10px] bg-red-100 text-red-700 px-2 py-1 rounded-full">Gargalo migrou</span>
+              </div>
+              <p class="text-xs text-slate-600 mt-2"><span class="font-semibold">Força:</span> Testes em múltiplos laboratórios; capacidade de produção e logística.</p>
+              <p class="text-xs text-slate-600"><span class="font-semibold">Atenção:</span> Demanda por customização de chips não escalável; logística internacional ainda indefinida.</p>
+              <div class="mt-2 text-xs bg-red-50 p-2 rounded-lg"><span class="font-medium">⚠️ Recomendação:</span> Documentar customização como serviço de P&D com escopo e prazo fixos.</div>
+            </div>
+            <!-- Agente Pessoas (também com risco de sobrecarga) -->
+            <div class="mt-4 bg-white rounded-xl p-4 shadow-md border-l-4 border-red-400">
+              <div class="flex items-center justify-between">
+                <span class="font-bold text-red-700">🧑‍🤝‍🧑 Agente Pessoas</span>
+                <span class="text-[10px] bg-red-100 text-red-700 px-2 py-1 rounded-full">Sobrecarga</span>
+              </div>
+              <p class="text-xs text-slate-600 mt-2"><span class="font-semibold">Força:</span> Equipe proativa, Ana e Gustavo engajados na prospecção de novos modelos.</p>
+              <p class="text-xs text-slate-600"><span class="font-semibold">Atenção:</span> Acúmulo de funções (comercial, técnica, gestão) sem delegação efetiva.</p>
+              <div class="mt-2 text-xs bg-red-50 p-2 rounded-lg"><span class="font-medium">⚠️ Recomendação:</span> Definir papel claro da Ana na transferência tecnológica como serviço, não favor.</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- COLUNA 3: PENDÊNCIAS & ADEQUAÇÕES (Jurídico, Parcerias, Estratégia) -->
+        <div>
+          <div class="bg-purple-50 rounded-2xl p-4 border border-purple-200 shadow-sm h-full">
+            <div class="agent-col-header bg-purple-200 text-purple-800">📌 Pendências & Adequações</div>
+            <!-- Sintetizando os agentes que não apareceram explicitamente, mas com base no relatório: estratégia de pivot, transferência tecnológica, parcerias -->
+            <div class="mt-5 bg-white rounded-xl p-4 shadow-md border-l-4 border-purple-400">
+              <div class="flex items-center justify-between">
+                <span class="font-bold text-purple-700">🤝 Agente Parcerias</span>
+                <span class="text-[10px] bg-purple-100 text-purple-700 px-2 py-1 rounded-full">Pendência</span>
+              </div>
+              <p class="text-xs text-slate-600 mt-2"><span class="font-semibold">Força:</span> Abertura com Embrapii, Apex e Instituto Atlântico. Múltiplas frentes.</p>
+              <p class="text-xs text-slate-600"><span class="font-semibold">Atenção:</span> Falta de alinhamento operacional com os parceiros; contrapartidas não mapeadas.</p>
+              <div class="mt-2 text-xs bg-purple-50 p-2 rounded-lg"><span class="font-medium">📌 Recomendação:</span> Estruturar próximos passos com Instituto Atlântico e Apex, com prazos e responsáveis.</div>
+            </div>
+            <div class="mt-4 bg-white rounded-xl p-4 shadow-md border-l-4 border-purple-400">
+              <div class="flex items-center justify-between">
+                <span class="font-bold text-purple-700">🔄 Agente Pivot</span>
+                <span class="text-[10px] bg-purple-100 text-purple-700 px-2 py-1 rounded-full">Estratégia</span>
+              </div>
+              <p class="text-xs text-slate-600 mt-2"><span class="font-semibold">Força:</span> Reconhecimento de que o modelo de venda de chips não funciona; pivô para IA e transferência.</p>
+              <p class="text-xs text-slate-600"><span class="font-semibold">Atenção:</span> Risco de dispersão; é preciso escolher um caminho para executar nos próximos 6 meses.</p>
+              <div class="mt-2 text-xs bg-purple-50 p-2 rounded-lg"><span class="font-medium">📌 Recomendação:</span> Matriz de decisão comparando os três modelos com critérios de receita, esforço e prazo.</div>
+            </div>
+            <!-- Síntese CEO (dentro da coluna de pendências) -->
+            <div class="mt-4 bg-indigo-50 rounded-xl p-4 border border-indigo-200 shadow-sm">
+              <div class="flex items-center gap-2">
+                <span class="font-bold text-indigo-800">🧠 Síntese CEO</span>
+                <span class="text-[10px] bg-indigo-200 text-indigo-800 px-2 py-1 rounded-full">Visão integrada</span>
+              </div>
+              <p class="text-xs text-slate-700 mt-2 leading-relaxed">
+                <span class="font-semibold">Evolução:</span> Produto estagnado (rejeição de preço) · Mercado em pivot crítico · Finanças teóricas · Pessoas sobrecarregadas · Operações com novo gargalo · PC resolvida.
+              </p>
+              <div class="grid grid-cols-3 gap-1 text-[10px] mt-2 font-semibold text-slate-600">
+                <span>Produto ⚠️</span>
+                <span>Mercado ✅</span>
+                <span>Finanças ⚠️</span>
+                <span>Pessoas ⚠️</span>
+                <span>Operações ⚠️</span>
+                <span>PC ✅</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
 
-    <!-- LINHA 2: PAINEL DOS AGENTES (3 colunas: Metas, Riscos, Pendências) -->
-    <section class="max-w-7xl mx-auto px-6 py-6">
-        <div class="text-center mb-6">
-            <div class="inline-block bg-[#2563eb]/10 text-[#2563eb] text-sm font-semibold px-4 py-1 rounded-full">Agentes Especialistas</div>
-            <h2 class="text-2xl font-bold text-[#0f172a] mt-2">Diagnóstico por área estratégica</h2>
+    <!-- LINHA 2.5: PRESTAÇÃO DE CONTAS & ADERÊNCIA EDITAL (OBRIGATÓRIO) -->
+    <section class="mb-12 bg-gradient-to-r from-indigo-700 to-purple-800 rounded-3xl p-6 text-white shadow-2xl">
+      <div class="flex flex-wrap items-center justify-between gap-3">
+        <div class="flex items-center gap-3">
+          <span class="text-2xl">📋</span>
+          <h2 class="text-xl font-bold">Agente Prestação de Contas</h2>
+          <span class="bg-white/20 text-white text-xs px-3 py-1 rounded-full font-semibold">Edital StartBSB · Subvenção</span>
         </div>
-        <div class="grid md:grid-cols-3 gap-6">
-            
-            <!-- COLUNA 1: METAS (Agente Produto + Agente Mercado) -->
-            <div class="bg-white rounded-2xl shadow-xl overflow-hidden card-hover">
-                <div class="bg-gradient-to-r from-[#10b981] to-[#059669] px-5 py-3">
-                    <h3 class="text-white font-bold flex items-center gap-2"><span class="text-xl">🎯</span> Metas & Avanços</h3>
-                </div>
-                <div class="p-5 space-y-4">
-                    <!-- Agente Produto -->
-                    <div class="border-l-4 border-[#10b981] pl-3">
-                        <div class="flex items-center gap-2 mb-1"><span class="text-sm font-black text-[#10b981]">PRODUTO</span><span class="text-xs bg-green-100 px-2 py-0.5 rounded-full">Evolução crítica</span></div>
-                        <p class="text-sm text-gray-700">Consolidação da IA como diferencial competitivo acoplado ao chip físico. Evolução de "chip barato" para <strong>"plataforma de dados biológicos"</strong>.</p>
-                        <p class="text-xs text-gray-500 mt-2">🎯 Recomendação: Definir requisitos mínimos (MVP) do software de IA para validação na Cornell.</p>
-                    </div>
-                    <!-- Agente Mercado -->
-                    <div class="border-l-4 border-[#2563eb] pl-3">
-                        <div class="flex items-center gap-2 mb-1"><span class="text-sm font-black text-[#2563eb]">MERCADO</span><span class="text-xs bg-blue-100 px-2 py-0.5 rounded-full">B2B + recorrência</span></div>
-                        <p class="text-sm text-gray-700">Transição para modelo <strong>B2B "solução completa"</strong>. Joint Venture amadureceu para <strong>"Serviços de Análise Recorrente"</strong> → aumento do LTV.</p>
-                        <p class="text-xs text-gray-500 mt-2">🎯 Recomendação: Testar aceitação da precificação do software separadamente do hardware.</p>
-                    </div>
-                </div>
-            </div>
+        <span class="bg-yellow-300 text-yellow-900 text-xs px-3 py-1 rounded-full font-bold">✅ PC concluída</span>
+      </div>
 
-            <!-- COLUNA 2: RISCOS (Agente Finanças + Agente Operações) -->
-            <div class="bg-white rounded-2xl shadow-xl overflow-hidden card-hover">
-                <div class="bg-gradient-to-r from-[#ef4444] to-[#dc2626] px-5 py-3">
-                    <h3 class="text-white font-bold flex items-center gap-2"><span class="text-xl">⚠️</span> Riscos & Atenção</h3>
-                </div>
-                <div class="p-5 space-y-4">
-                    <!-- Agente Finanças -->
-                    <div class="border-l-4 border-[#ef4444] pl-3">
-                        <div class="flex items-center gap-2 mb-1"><span class="text-sm font-black text-[#ef4444]">FINANÇAS</span><span class="text-xs bg-red-100 px-2 py-0.5 rounded-full">Capex vs Opex</span></div>
-                        <p class="text-sm text-gray-700">Dificuldade em <strong>ratear custo de capital</strong> (equipamentos) no preço unitário. Empreendedor confunde faturamento com margem de contribuição.</p>
-                        <p class="text-xs text-gray-500 mt-2">⚠️ Recomendação: Finalizar planilha incluindo custo de manutenção da IA e servidores.</p>
-                    </div>
-                    <!-- Agente Operações -->
-                    <div class="border-l-4 border-[#f59e0b] pl-3">
-                        <div class="flex items-center gap-2 mb-1"><span class="text-sm font-black text-[#f59e0b]">OPERAÇÕES</span><span class="text-xs bg-amber-100 px-2 py-0.5 rounded-full">Gargalo migrou</span></div>
-                        <p class="text-sm text-gray-700">Gargalo operacional migrou do <strong>"fazer o chip"</strong> para <strong>"processar os dados do chip"</strong>. Necessidade de processos de pós-venda.</p>
-                        <p class="text-xs text-gray-500 mt-2">⚠️ Recomendação: Desenhar fluxo de jornada do cliente (chip → relatório via IA).</p>
-                    </div>
-                </div>
-            </div>
+      <!-- Grid 4 colunas -->
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mt-6">
+        <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-4">
+          <p class="text-xs uppercase tracking-wider text-indigo-200 font-semibold">Metas em Andamento</p>
+          <ul class="mt-2 text-sm space-y-1">
+            <li class="flex items-center gap-2"><span class="text-emerald-300">✓</span> Meta 1: Validação inicial</li>
+            <li class="flex items-center gap-2"><span class="text-emerald-300">✓</span> Meta 2: Testes laboratoriais</li>
+            <li class="flex items-center gap-2"><span class="text-yellow-300">⏳</span> Meta 3: Análise avançada</li>
+          </ul>
+        </div>
+        <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-4">
+          <p class="text-xs uppercase tracking-wider text-indigo-200 font-semibold">Riscos de Cumprimento</p>
+          <ul class="mt-2 text-sm space-y-1">
+            <li class="flex items-center gap-2"><span class="text-red-300">❗</span> Nova PC (Embrapii) sem mapeamento</li>
+            <li class="flex items-center gap-2"><span class="text-red-300">❗</span> Contrapartida financeira não projetada</li>
+          </ul>
+        </div>
+        <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-4">
+          <p class="text-xs uppercase tracking-wider text-indigo-200 font-semibold">Avanços vs Sessão Anterior</p>
+          <ul class="mt-2 text-sm space-y-1">
+            <li class="flex items-center gap-2"><span class="text-emerald-300">▲</span> PC R$10k finalizada</li>
+            <li class="flex items-center gap-2"><span class="text-emerald-300">▲</span> Documentação organizada</li>
+          </ul>
+        </div>
+        <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-4">
+          <p class="text-xs uppercase tracking-wider text-indigo-200 font-semibold">Ações Recomendadas</p>
+          <ul class="mt-2 text-sm space-y-1">
+            <li class="flex items-center gap-2">📄 Mapear requisitos Embrapii</li>
+            <li class="flex items-center gap-2">🔐 Separar contrapartidas</li>
+            <li class="flex items-center gap-2">📂 Documentar lições aprendidas</li>
+          </ul>
+        </div>
+      </div>
 
-            <!-- COLUNA 3: PENDÊNCIAS (Agente Pessoas + Agente Prestação de Contas) -->
-            <div class="bg-white rounded-2xl shadow-xl overflow-hidden card-hover">
-                <div class="bg-gradient-to-r from-[#f59e0b] to-[#d97706] px-5 py-3">
-                    <h3 class="text-white font-bold flex items-center gap-2"><span class="text-xl">⚖️</span> Pendências & Adequações</h3>
-                </div>
-                <div class="p-5 space-y-4">
-                    <!-- Agente Pessoas -->
-                    <div class="border-l-4 border-[#f59e0b] pl-3">
-                        <div class="flex items-center gap-2 mb-1"><span class="text-sm font-black text-[#f59e0b]">PESSOAS</span><span class="text-xs bg-amber-100 px-2 py-0.5 rounded-full">Equipe sobrecarregada</span></div>
-                        <p class="text-sm text-gray-700">Sobrecarga da equipe técnica com tarefas de <strong>formatação de planilhas de negócios</strong>. Equipe receptiva a mentorias, mas com lacunas financeiras.</p>
-                        <p class="text-xs text-gray-500 mt-2">📌 Recomendação: Delegar coleta primária de dados de custos a assistente administrativo ou bolsista técnico.</p>
-                    </div>
-                    <!-- Agente Prestação de Contas (resumo) -->
-                    <div class="border-l-4 border-[#7c3aed] pl-3">
-                        <div class="flex items-center gap-2 mb-1"><span class="text-sm font-black text-[#7c3aed]">PRESTAÇÃO DE CONTAS</span><span class="text-xs bg-purple-100 px-2 py-0.5 rounded-full">Evidências</span></div>
-                        <p class="text-sm text-gray-700">Avanço documental na organização das evidências de <strong>"Tecnologia de Dados"</strong> associada à patente. Documentação do rateio de custos em andamento.</p>
-                        <p class="text-xs text-gray-500 mt-2">📌 Recomendação: Garantir que relatório de PC descreva IA como parte integrante do desenvolvimento subvencionado.</p>
-                    </div>
-                </div>
-            </div>
+      <!-- Tema crítico -->
+      <div class="mt-6 bg-slate-900/40 rounded-2xl p-4 flex flex-wrap items-center justify-between gap-3">
+        <div>
+          <span class="text-xs uppercase tracking-wider text-indigo-300 font-semibold">🎯 Tema Crítico</span>
+          <p class="text-sm font-medium mt-1">A PC atual está encerrada, mas o novo modelo de negócio (Embrapii, Apex, transferência) exigirá prestação de contas mais complexas. A BioEny não pode repetir o erro de planejar a PC depois do projeto começar.</p>
         </div>
-        <!-- Resumo integrado (Síntese CEO) -->
-        <div class="mt-6 bg-slate-50 rounded-xl p-4 border border-slate-200">
-            <div class="flex items-start gap-3">
-                <span class="text-2xl">🎯</span>
-                <div>
-                    <p class="text-sm font-semibold text-[#0f172a]">Síntese CEO — Visão Integrada</p>
-                    <p class="text-sm text-gray-600">BioEny encontrou seu "Norte" ao integrar <strong>Inteligência Artificial ao hardware</strong>, resolvendo o problema da baixa margem do chip físico. O modelo evoluiu de fabricante de insumos para <strong>empresa de tecnologia de diagnóstico/pesquisa</strong>.</p>
-                    <div class="flex flex-wrap gap-4 mt-2 text-xs">
-                        <span class="text-emerald-600">✅ Modelo de Negócio: evolução 70%</span>
-                        <span class="text-blue-600">📊 Financeiro: evolução 40%</span>
-                        <span class="text-amber-600">🔧 Tecnológico: evolução 30%</span>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <span class="bg-yellow-400 text-yellow-900 text-xs px-3 py-1 rounded-full font-bold whitespace-nowrap">Subvenção: R$ 0/mês</span>
+      </div>
+
+      <!-- Recomendação final -->
+      <div class="mt-4 bg-white/5 border border-white/10 rounded-2xl p-4 italic text-sm text-indigo-100">
+        “Mapear os requisitos de prestação de contas da Embrapii com antecedência, estruturando contratos com marcos de entrega e contrapartidas claras.”
+      </div>
     </section>
 
-    <!-- LINHA 2.5: NOVO ITEM - PRESTAÇÃO DE CONTAS (Agente Específico) -->
-    <section class="max-w-7xl mx-auto px-6 py-6">
-        <div class="bg-white rounded-3xl shadow-xl overflow-hidden card-hover">
-            <!-- Header com gradiente específico para PC -->
-            <div class="bg-gradient-to-r from-[#7c3aed] to-[#5b21b6] px-6 py-4">
-                <div class="flex items-center justify-between flex-wrap gap-3">
-                    <div class="flex items-center gap-3">
-                        <span class="text-2xl">📋</span>
-                        <h2 class="text-xl md:text-2xl font-bold text-white">Agente Prestação de Contas</h2>
-                        <span class="bg-white/20 text-white text-xs px-3 py-1 rounded-full">Edital StartBSB · Subvenção Econômica</span>
-                    </div>
-                    <div class="flex items-center gap-2">
-                        <span class="w-2 h-2 bg-red-400 rounded-full animate-pulse"></span>
-                        <span class="text-xs text-white/80">Prazo crítico: Meta 1 em andamento</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="p-6">
-                <!-- Grid 4 colunas: Metas, Riscos, Avanços, Ações -->
-                <div class="grid md:grid-cols-4 gap-5">
-                    
-                    <!-- 1. Metas em Andamento -->
-                    <div class="bg-blue-50 rounded-xl p-4 border-l-4 border-[#2563eb]">
-                        <div class="flex items-center gap-2 mb-3">
-                            <span class="text-lg">🎯</span>
-                            <h3 class="font-bold text-[#0f172a] text-sm uppercase">Metas em Andamento</h3>
-                        </div>
-                        <ul class="space-y-2 text-sm">
-                            <li class="flex items-start gap-2"><span class="text-blue-600 mt-0.5">✓</span> <span>Organização dos custos para plano de negócios do <strong>Edital StartBSB</strong></span></li>
-                            <li class="flex items-start gap-2"><span class="text-blue-600 mt-0.5">✓</span> <span>Estruturação do banco de dados inicial da IA com recursos de custeio</span></li>
-                            <li class="flex items-start gap-2"><span class="text-amber-500 mt-0.5">⏳</span> <span>Documentação do rateio de custos (Capex/Opex) conforme orientação do mentor</span></li>
-                        </ul>
-                    </div>
-
-                    <!-- 2. Riscos de Cumprimento -->
-                    <div class="bg-red-50 rounded-xl p-4 border-l-4 border-[#ef4444]">
-                        <div class="flex items-center gap-2 mb-3">
-                            <span class="text-lg">⚠️</span>
-                            <h3 class="font-bold text-[#0f172a] text-sm uppercase">Riscos de Cumprimento</h3>
-                        </div>
-                        <ul class="space-y-2 text-sm">
-                            <li class="flex items-start gap-2"><span class="text-red-500 mt-0.5">❗</span> <span>Cronograma de desembolso <strong>precisa estar alinhado</strong> com o desenvolvimento do software de IA</span></li>
-                            <li class="flex items-start gap-2"><span class="text-red-500 mt-0.5">❗</span> <span>Risco de <strong>glosa na prestação de contas</strong> se o rateio de custos não for documentado corretamente</span></li>
-                            <li class="flex items-start gap-2"><span class="text-red-500 mt-0.5">❗</span> <span>Meta 1 com prazo final <strong>01/05/2026</strong> — evidências técnicas precisam ser consolidadas</span></li>
-                        </ul>
-                    </div>
-
-                    <!-- 3. Avanços Documentais -->
-                    <div class="bg-emerald-50 rounded-xl p-4 border-l-4 border-[#10b981]">
-                        <div class="flex items-center gap-2 mb-3">
-                            <span class="text-lg">📈</span>
-                            <h3 class="font-bold text-[#0f172a] text-sm uppercase">Avanços vs Sessão 02</h3>
-                        </div>
-                        <ul class="space-y-2 text-sm">
-                            <li class="flex items-start gap-2"><span class="text-emerald-600 mt-0.5">▲</span> <span><strong>Avanço documental significativo</strong> na organização das evidências de "Tecnologia de Dados" associada à patente</span></li>
-                            <li class="flex items-start gap-2"><span class="text-emerald-600 mt-0.5">▲</span> <span>Evolução da <strong>rastreabilidade dos insumos</strong> e comprovantes de despesas de custeio</span></li>
-                        </ul>
-                    </div>
-
-                    <!-- 4. Ações Imediatas -->
-                    <div class="bg-amber-50 rounded-xl p-4 border-l-4 border-[#f59e0b]">
-                        <div class="flex items-center gap-2 mb-3">
-                            <span class="text-lg">🔧</span>
-                            <h3 class="font-bold text-[#0f172a] text-sm uppercase">Ações Recomendadas</h3>
-                        </div>
-                        <ul class="space-y-2 text-sm">
-                            <li class="flex items-start gap-2"><span class="text-amber-600 mt-0.5">📄</span> <span>Garantir que o relatório de PC descreva a <strong>IA como parte integrante</strong> do desenvolvimento subvencionado</span></li>
-                            <li class="flex items-start gap-2"><span class="text-amber-600 mt-0.5">🔐</span> <span><strong>Documentar o rateio de custos</strong> conforme orientação do mentor para evitar glosas futuras</span></li>
-                        </ul>
-                    </div>
-                </div>
-
-                <!-- Tema Crítico Destacado -->
-                <div class="mt-5 bg-[#0f172a] text-white rounded-xl p-4 flex flex-wrap justify-between items-center gap-3">
-                    <div class="flex items-center gap-3">
-                        <span class="text-2xl">🎯</span>
-                        <div>
-                            <p class="text-xs text-blue-300 font-mono">TEMA CRÍTICO - PRESTAÇÃO DE CONTAS</p>
-                            <p class="text-sm font-medium"><strong>Separação correta de custos</strong> para não inflar o preço do chip e torná-lo inviável frente aos importados — a margem deve vir do serviço de software.</p>
-                        </div>
-                    </div>
-                    <span class="bg-[#7c3aed] text-white text-xs px-3 py-1 rounded-full whitespace-nowrap">Subvenção: R$ 7.000/mês até jul/2026</span>
-                </div>
-
-                <!-- Recomendação Final do Agente -->
-                <div class="mt-4 text-sm bg-slate-100 p-3 rounded-lg italic text-gray-700 flex items-start gap-2">
-                    <span class="text-[#7c3aed] font-bold text-lg">→</span>
-                    <span><strong>Recomendação final do Agente Prestação de Contas:</strong> Utilizar os recursos de custeio para a estruturação do banco de dados inicial da IA e documentar o rateio de custos conforme orientação do mentor para evitar glosas na prestação de contas futura.</span>
-                </div>
-            </div>
+    <!-- LINHA 3: PIVOT ESTRATÉGICO (ANTES vs DEPOIS) -->
+    <section class="mb-12 bg-white rounded-3xl card-shadow p-6">
+      <h2 class="text-xl font-bold text-slate-800 flex items-center gap-2 mb-4"><span class="text-blue-600">🔄</span> Pivot Estratégico — Sessão 04</h2>
+      <div class="flex flex-col md:flex-row items-center justify-center gap-6 md:gap-10">
+        <div class="bg-slate-50 rounded-2xl p-6 w-full md:w-2/5 text-center border-2 border-slate-200">
+          <span class="text-xs font-semibold text-slate-400 uppercase">Antes (Sessão 03)</span>
+          <p class="text-lg font-bold text-slate-700 mt-1">Venda de chips</p>
+          <p class="text-sm text-slate-500">Hardware descartável · margem baixa · difícil aceitação</p>
         </div>
+        <div class="flex items-center">
+          <span class="arrow-pivot">⟶</span>
+        </div>
+        <div class="bg-blue-50 rounded-2xl p-6 w-full md:w-2/5 text-center border-2 border-blue-300">
+          <span class="text-xs font-semibold text-blue-500 uppercase">Depois (Sessão 04)</span>
+          <p class="text-lg font-bold text-blue-700 mt-1">Plataforma de dados + IA</p>
+          <p class="text-sm text-slate-600">Receita recorrente · transferência tecnológica · mercado internacional</p>
+        </div>
+      </div>
+      <div class="mt-4 text-center text-sm text-slate-500 border-t border-slate-200 pt-4">
+        <span class="bg-blue-100 text-blue-700 px-3 py-1 rounded-full font-medium">🔹 Modelos: Venda direta · IA/Embrapii · Transferência tecnológica</span>
+      </div>
     </section>
 
-    <!-- LINHA 3: VISUALIZAÇÃO DO PIVOT ESTRATÉGICO (Antes vs Depois) -->
-    <section class="max-w-7xl mx-auto px-6 py-10">
-        <div class="bg-gradient-to-r from-[#0f172a] to-[#1e2a44] rounded-3xl shadow-xl p-6 md:p-8 text-white">
-            <div class="flex items-center gap-3 mb-6"><span class="text-3xl">🔄</span><h2 class="text-2xl font-extrabold">Pivot Estratégico · Evolução do Modelo de Negócio</h2><span class="bg-emerald-500 text-black text-xs px-3 py-1 rounded-full ml-auto">Salto de maturidade</span></div>
-            <div class="grid md:grid-cols-2 gap-8">
-                <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-5 border border-white/20">
-                    <div class="text-center text-red-300 text-sm font-semibold uppercase tracking-wider">❌ Modelo Anterior (Sessão 02)</div>
-                    <div class="mt-3 text-white text-lg font-bold text-center">Fabricante de Chip Nacional</div>
-                    <ul class="mt-4 space-y-2 text-sm text-slate-200">
-                        <li class="flex gap-2"><span class="text-red-400">✖</span> Hardware descartável → margem baixa</li>
-                        <li class="flex gap-2"><span class="text-red-400">✖</span> Competição direta com importados low-cost</li>
-                        <li class="flex gap-2"><span class="text-red-400">✖</span> Dificuldade de precificação e ROI para pesquisador</li>
-                    </ul>
-                </div>
-                <div class="relative flex items-center justify-center">
-                    <div class="hidden md:block text-5xl text-cyan-300 animate-pulse">➡️</div>
-                    <div class="block md:hidden text-3xl text-cyan-300 rotate-90 my-2">⬇️</div>
-                </div>
-                <div class="bg-[#10b981]/10 backdrop-blur-sm rounded-2xl p-5 border border-[#10b981]/40">
-                    <div class="text-center text-emerald-300 text-sm font-semibold uppercase tracking-wider">✅ Novo Modelo (Sessão 03)</div>
-                    <div class="mt-3 text-white text-xl font-bold text-center">Plataforma de Dados Biológicos (IA + Chip)</div>
-                    <ul class="mt-4 space-y-2 text-sm text-slate-100">
-                        <li class="flex gap-2"><span class="text-emerald-400">✓</span> Software de análise de imagens como diferencial competitivo</li>
-                        <li class="flex gap-2"><span class="text-emerald-400">✓</span> Modelo de serviços recorrentes → alto LTV</li>
-                        <li class="flex gap-2"><span class="text-emerald-400">✓</span> Barreira de entrada contra concorrentes low-cost</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
+    <!-- LINHA 4: PLANO DE AÇÃO + PERGUNTA ESTRATÉGICA -->
+    <section class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div class="bg-white rounded-3xl card-shadow p-6 border-t-4 border-blue-600">
+        <div class="flex items-center gap-2 text-blue-600 font-bold text-sm uppercase tracking-wider">🎯 Prioridade 1</div>
+        <h3 class="text-lg font-bold text-slate-800 mt-1">Matriz de decisão</h3>
+        <p class="text-sm text-slate-600 mt-2">Ana e Gustavo devem trazer uma matriz comparando os três modelos de negócio (venda de chips, Embrapii+IA, transferência tecnológica) com critérios de receita, esforço, prazo e adequação ao time.</p>
+      </div>
+      <div class="bg-white rounded-3xl card-shadow p-6 border-t-4 border-purple-600">
+        <div class="flex items-center gap-2 text-purple-600 font-bold text-sm uppercase tracking-wider">📌 Prioridade 2</div>
+        <h3 class="text-lg font-bold text-slate-800 mt-1">Ação Apex</h3>
+        <p class="text-sm text-slate-600 mt-2">Definir plano de ação para aproximação com a Apex, incluindo prazos e responsáveis, para iniciar a exploração do mercado internacional.</p>
+      </div>
+      <div class="bg-white rounded-3xl card-shadow p-6 border-t-4 border-emerald-600">
+        <div class="flex items-center gap-2 text-emerald-600 font-bold text-sm uppercase tracking-wider">⚙️ Prioridade 3</div>
+        <h3 class="text-lg font-bold text-slate-800 mt-1">Instituto Atlântico</h3>
+        <p class="text-sm text-slate-600 mt-2">Estruturar próximo encontro com Instituto Atlântico para Ana entender na prática o modelo Embrapii e suas exigências de prestação de contas.</p>
+      </div>
     </section>
 
-    <!-- LINHA 4: CARDS DO PLANO DE AÇÃO (Prioridade 0, Médio Prazo, Estabilização) -->
-    <section class="max-w-7xl mx-auto px-6 py-6 pb-12">
-        <div class="bg-white rounded-3xl shadow-xl p-6 md:p-8">
-            <h2 class="text-2xl font-black text-[#0f172a] flex items-center gap-2">📌 Plano de Ação · Próxima Sessão</h2>
-            <div class="grid md:grid-cols-3 gap-6 mt-7">
-                <div class="bg-[#ef4444]/5 border border-[#ef4444]/30 rounded-2xl p-5 card-hover">
-                    <div class="flex items-center gap-2"><span class="text-3xl">🔥</span><span class="bg-red-500 text-white text-xs px-2 py-0.5 rounded-full">Prioridade 0</span></div>
-                    <h3 class="font-extrabold text-lg mt-2">Planilha de Custos Atualizada</h3>
-                    <p class="text-sm text-gray-600 mt-2">Apresentar planilha com estrutura enviada pelo mentor, incluindo custo de manutenção da IA e servidores, com rateio correto de Capex.</p>
-                </div>
-                <div class="bg-[#2563eb]/5 border border-[#2563eb]/30 rounded-2xl p-5 card-hover">
-                    <div class="flex items-center gap-2"><span class="text-3xl">💰</span><span class="bg-blue-500 text-white text-xs px-2 py-0.5 rounded-full">Médio Prazo</span></div>
-                    <h3 class="font-extrabold text-lg mt-2">Política de Preços (HW + SW)</h3>
-                    <p class="text-sm text-gray-600 mt-2">Definir precificação do pacote completo e testar aceitação do software separadamente com cliente real.</p>
-                </div>
-                <div class="bg-[#10b981]/5 border border-[#10b981]/30 rounded-2xl p-5 card-hover">
-                    <div class="flex items-center gap-2"><span class="text-3xl">📅</span><span class="bg-emerald-500 text-white text-xs px-2 py-0.5 rounded-full">Estabilização</span></div>
-                    <h3 class="font-extrabold text-lg mt-2">Próxima Agenda + Validação</h3>
-                    <p class="text-sm text-gray-600 mt-2">Marcar reunião integrando Gustavo para validar visão financeira e definir requisitos mínimos do MVP de IA.</p>
-                </div>
-            </div>
-            <!-- Pergunta Estratégica -->
-            <div class="mt-8 bg-[#0f172a] text-white rounded-2xl p-5">
-                <p class="text-sm font-mono opacity-80 mb-1">PERGUNTA ESTRATÉGICA PARA A PRÓXIMA SESSÃO</p>
-                <p class="font-semibold text-base md:text-lg">“Se retirarmos o software de IA hoje, a BioEny ainda possui um diferencial competitivo que sustente uma margem de lucro saudável apenas com o chip?”</p>
-            </div>
-        </div>
-    </section>
+    <!-- Pergunta estratégica -->
+    <div class="mt-8 bg-slate-800 rounded-3xl p-6 text-white shadow-xl">
+      <p class="text-sm font-medium text-slate-300 uppercase tracking-wider">❓ Pergunta Estratégica</p>
+      <p class="text-lg md:text-xl font-bold mt-1 leading-relaxed">“Se o mercado nacional não compra o chip, e a transferência tecnológica demanda tempo da Ana, e a Embrapii exige contrapartida financeira — qual desses caminhos a BioEny tem <span class="text-yellow-300">real condição de executar</span> nos próximos 6 meses, com os recursos e pessoas atuais?”</p>
+    </div>
 
-    <footer class="border-t bg-white mt-4">
-        <div class="max-w-7xl mx-auto px-6 py-6 flex flex-wrap justify-between text-gray-500 text-xs">
-            <div>© BioEny Mentorship · Sessão 03 · Painel dos Agentes + Prestação de Contas</div>
-            <div>Chart.js | Sem SVG/Mermaid | Dados extraídos do relatório</div>
-        </div>
-    </footer>
+  </main>
 
-    <script>
-        // GRÁFICO 1: Evolução TRL
-        const ctxTRL = document.getElementById('trlEvolutionChart').getContext('2d');
-        new Chart(ctxTRL, {
-            type: 'bar',
-            data: {
-                labels: ['Sessão 01 (20 Mar)', 'Sessão 02 (02 Abr)', 'Sessão 03 (30 Abr)'],
-                datasets: [{
-                    label: 'TRL (Technology Readiness Level)',
-                    data: [3, 3.5, 4],
-                    backgroundColor: ['#94a3b8', '#60a5fa', '#2563eb'],
-                    borderRadius: 12,
-                    barPercentage: 0.7
-                }]
+  <footer class="text-center text-xs text-slate-400 py-6 border-t border-slate-200 mt-8">
+    Relatório Sessão 04 · BioEny · 02 de junho de 2026 · Infográfico gerado automaticamente
+  </footer>
+
+  <!-- SCRIPTS CHART.JS -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      // GRÁFICO TRL (Evolução)
+      const ctxTRL = document.getElementById('chartTRL').getContext('2d');
+      new Chart(ctxTRL, {
+        type: 'bar',
+        data: {
+          labels: ['Sessão 01', 'Sessão 02', 'Sessão 03', 'Sessão 04'],
+          datasets: [{
+            label: 'TRL',
+            data: [4, 4, 4, 5],
+            backgroundColor: ['#94a3b8', '#94a3b8', '#3b82f6', '#10b981'],
+            borderRadius: 6,
+            barPercentage: 0.6,
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: { display: false },
+            tooltip: {
+              callbacks: {
+                title: function(items) {
+                  return items[0].label;
+                }
+              }
+            }
+          },
+          scales: {
+            y: { min: 0, max: 7, ticks: { stepSize: 1, callback: v => 'TRL ' + v } },
+            x: { grid: { display: false } }
+          }
+        }
+      });
+
+      // GRÁFICO RISCOS / RECURSOS (Doughnut)
+      const ctxRiscos = document.getElementById('chartRiscos').getContext('2d');
+      new Chart(ctxRiscos, {
+        type: 'doughnut',
+        data: {
+          labels: ['Dependência pública', 'Receita recorrente (IA)', 'Transferência tecnológica'],
+          datasets: [{
+            data: [65, 20, 15],
+            backgroundColor: ['#ef4444', '#3b82f6', '#8b5cf6'],
+            borderColor: 'white',
+            borderWidth: 2,
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: {
+              position: 'bottom',
+              labels: { boxWidth: 12, font: { size: 11, family: 'Plus Jakarta Sans' } }
             },
-            options: {
-                responsive: true,
-                maintainAspectRatio: true,
-                plugins: {
-                    tooltip: { callbacks: { label: (ctx) => `${ctx.dataset.label}: ${ctx.raw}` } },
-                    legend: { position: 'top' }
+            tooltip: {
+              callbacks: {
+                title: function(items) {
+                  return items[0].label;
                 },
-                scales: {
-                    y: { beginAtZero: true, max: 6, title: { display: true, text: 'TRL' }, ticks: { stepSize: 1 } },
-                    x: { ticks: { font: { size: 11 } } }
+                label: function(context) {
+                  return context.parsed + '%';
                 }
+              }
             }
-        });
+          },
+          cutout: '65%'
+        }
+      });
+    });
+  </script>
 
-        // GRÁFICO 2: Donut
-        const ctxDonut = document.getElementById('costAllocationChart').getContext('2d');
-        new Chart(ctxDonut, {
-            type: 'doughnut',
-            data: {
-                labels: ['Custo variável (chip/insumos)', 'Desenvolvimento IA + servidores', 'Rateio Capex (depreciação)', 'Margem recorrente (serviço IA)'],
-                datasets: [{
-                    data: [35, 28, 12, 25],
-                    backgroundColor: ['#10b981', '#2563eb', '#f59e0b', '#ef4444'],
-                    borderWidth: 0,
-                    cutout: '55%',
-                }]
-            },
-            options: {
-                responsive: true,
-                maintainAspectRatio: true,
-                plugins: {
-                    tooltip: {
-                        callbacks: {
-                            title: (tooltipItems) => {
-                                let label = tooltipItems[0].label;
-                                if (label.length > 18) return label.match(/.{1,18}/g) || [label];
-                                return label;
-                            },
-                            label: (context) => `${context.label}: ${context.raw}%`
-                        }
-                    },
-                    legend: { position: 'bottom', labels: { font: { size: 10 } } }
-                }
-            }
-        });
-    </script>
 </body>
 </html>
